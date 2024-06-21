@@ -1,4 +1,4 @@
-function countSheeps(list) {
+export function countSheeps(list) {
 
     for (let i = 0; i < list.length; i++) {
       if (typeof list[i] !== "boolean") {
@@ -22,6 +22,6 @@ function countSheeps(list) {
   const list2 = [false, false, false];
   const list3 = [true, true, "miau", false];
 
-  console.log(countSheeps(list1));
-  console.log(countSheeps(list2));
-  console.log(countSheeps(list3));
+  console.log(countSheeps(list1)); //There are 17 sheep in total
+  console.log(countSheeps(list2)); //UPS!!! Wolfs eaten Sheeps
+  console.log(countSheeps(list3)); //The list must contain only boolean values

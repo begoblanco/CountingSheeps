@@ -1,74 +1,35 @@
 import { describe, expect, it } from "vitest";
-import { arrSum } from "./src/js/arrayPlusArray.js";
+import { countSheeps } from "src/js/countingSheeps.js";
 
-describe("arrSum as function", () => {
-  it("return the sum of all the elements of two arrays", () => {
+describe("countSheeps as function", () => {
+  it("return the sum of all the true values in a given list ", () => {
     //Given
-    const arr1 = [1, 2, 3];
-    const arr2 = [4, 5, 6];
-    const expected = 21;
+    const list1 = [true, true, true, false, true, true, true, true , true, false, true, false, true, false, false, true , true, true, true, true , false, false, true, true];
+    const expected = "There are 17 sheep in total";
     //When
-    const result = arrSum(arr1, arr2);
-    //Then
-    expect(result).toBeTypeOf("number");
-    expect(result).toEqual(expected);
-  });
-
-  it("return the sum of all the elements of two arrays with negative numbers", () => {
-    //Given
-    const arr1 = [-1, -2, -3];
-    const arr2 = [-4, -5, -6];
-    const expected = -21;
-    //When
-    const result = arrSum(arr1, arr2);
-    //Then
-    expect(result).toBeTypeOf("number");
-    expect(result).toEqual(expected);
-  });
-
-  it("return the sum of all the elements of two arrays one using zeros", () => {
-    //Given
-    const arr1 = [0, 0, 0];
-    const arr2 = [4, 5, 6];
-    const expected = 15;
-    //When
-    const result = arrSum(arr1, arr2);
-    //Then
-    expect(result).toBeTypeOf("number");
-    expect(result).toEqual(expected);
-  });
-
-  it("return the sum of all the elements of two arrays with large numbers", () => {
-    //Given
-    const arr1 = [100, 200, 300];
-    const arr2 = [400, 500, 600];
-    const expected = 2100;
-    //When
-    const result = arrSum(arr1, arr2);
-    //Then
-    expect(result).toBeTypeOf("number");
-    expect(result).toEqual(expected);
-  });
-
-  it("not an integer input case", () => {
-    //Given
-    const arr1 = [1, 2, "miau"];
-    const arr2 = [4, 5, 6];
-    const expected = "The arrays must contain only integer numbers";
-    //When
-    const result = arrSum(arr1, arr2);
+    const result = countSheeps(list1);
     //Then
     expect(result).toBeTypeOf("string");
     expect(result).toEqual(expected);
   });
 
-  it("not an integer input case", () => {
+  it("if all the elements in the list are false, it means a wolf has eaten the sheeps", () => {
     //Given
-    const arr1 = [1, 2, 3];
-    const arr2 = [4, 5];
-    const expected = "The arrays must be the same length";
+    const list2 = [false, false, false];
+    const expected = "UPS!!! Wolfs eaten Sheeps"
     //When
-    const result = arrSum(arr1, arr2);
+    const result = countSheeps(list2);
+    //Then
+    expect(result).toBeTypeOf("string");
+    expect(result).toEqual(expected);
+  });
+
+  it("not an boolean input case", () => {
+    //Given
+    const list3 = [true, true, "miau", false];
+    const expected = "The list must contain only boolean values";
+    //When
+    const result = countSheeps(list3);
     //Then
     expect(result).toBeTypeOf("string");
     expect(result).toEqual(expected);
